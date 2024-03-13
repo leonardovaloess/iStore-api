@@ -22,8 +22,12 @@ const deleteUser = async (req, res) => {
 
 const editUser = async (req, res) => {
   const userId = req.params.id;
-  const { name, age } = req.body
-  const editUser = await User.findByIdAndUpdate(userId, { name, age }, {new: true});
+  const { name, age } = req.body;
+  const editUser = await User.findByIdAndUpdate(
+    userId,
+    { name, age },
+    { new: true }
+  );
   if (!editUser) {
     return res.status(404).json({ error: "usuário não encontrado" });
   }

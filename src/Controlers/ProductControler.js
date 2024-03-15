@@ -5,6 +5,21 @@ const getProducts = async (req, res) => {
   return res.status(200).json(products);
 };
 
+const getProductById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const product = await Product.findById(id);
+    if (!product) {
+      return res.status(404).json({ message: "Produto não encontrado" });
+    }
+    return res.status(200).json(product);
+  } catch (error) {
+    console.error("Erro ao buscar produto por ID:", error);
+    return res.status(500).json({ message: "Erro interno do servidor" });
+  }
+};
+
 const createProduct = async (req, res) => {
   const product = req.body;
   const newProduct = await Product.create(product);
@@ -38,4 +53,4 @@ const editProduct = async (req, res) => {
   }
 };
 
-export { getProducts, createProduct, deleteProduct, editProduct };
+export { getProducts, createProduct, deleteProduct, editProduct, getProductById };

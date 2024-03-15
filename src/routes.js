@@ -10,6 +10,7 @@ import {
   deleteProduct,
   editProduct,
   getProducts,
+  getProductById,
 } from "./Controlers/ProductControler.js";
 
 // Users Routes
@@ -26,6 +27,8 @@ routes.put("/users/:id", editUser);
 //Products Routes
 
 routes.get("/products", getProducts);
+
+routes.get("/products/:id", getProductById);
 
 routes.post("/products", createProduct);
 

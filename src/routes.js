@@ -16,6 +16,7 @@ import {
 // Users Routes
 
 const routes = Router();
+
 routes.get("/users", getUsers);
 
 routes.post("/users", createUser);

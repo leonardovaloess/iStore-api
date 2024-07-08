@@ -16,7 +16,9 @@ import {
 // Users Routes
 
 const routes = Router();
-
+routes.get('/', (req,res) => {
+  return res.status(200).json({"ok":true})
+})
 routes.get("/users", getUsers);
 
 routes.post("/users", createUser);
